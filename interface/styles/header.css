@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+body {
+    margin: 0px;
+    background-color: gainsboro;
+}
+
+#header {
+    padding: 10px 15px 0px 10px;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#topo_pagina {
+    width: 350px;
+    height: 80px;
+}
+
+#SearchBar {
+    padding: 10px;
+    position: center;
+}
+
+#barraPesquisa {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    position: center;
+    border: none;
+    width: 400px;
+    height: 30px;
+}
+
+#botaoPesquisa {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+}
+
+#Itens_topo {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.Itens-topo {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.Itens-topo a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: black;
+    gap: 5px
+}
+
+.Itens-topo a i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 0px;
+}

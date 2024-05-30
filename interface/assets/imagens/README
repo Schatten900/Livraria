@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+//Esta será a parte do html
+<head>
+    <!-- -- > 
+        Aqui é o head, onde o cabeçalho da pagina é processado
+        Além disso, é aqui onde fazemos importações do css, pelo href = rota e rel =stylesheet que diz com que esta relacionado o css
+    <-- -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/style.css" rel="stylesheet">
+    <title>Site prototipo</title>
+</head>
+
+<body>
+    <!-- -- > 
+        Aqui é o body, onde a estrutura do site será feita
+        Podemos colocar em uma div para melhorar a organização
+                            <-- -->
+    <div>
+        <h1 id="titulo_principal"> Bem vindo a minha pagina!</h1>
+        <p class="texto_cinza"> Aqui você poderá ver meu progresso no Front-End </p>
+        <p class="texto_cinza"> Css e Html são mais simples do que eu esperava! </p>
+        <p> Podemos ate mesmo criar classes como os textos acima... esse não.</p>
+        <a href="https://google.com">Clique aqui</a>
+    </div>
+
+    <div>
+        <img src="./assets/imagens/fern.png" class='pequeno_porte'>
+        <img src="./assets/imagens/fern.png">
+    </div>
+    <div>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <button>Clique aqui denovo </button>
+        <input type="text" placeholder="insira um texto">
+        <!-- -- > no input, podemos escolher o tipo: texto,numero,password,email,file <-->
+    </div>
+
+
+</body>
+
+</html>
+
+// Essa é a parte de CSS que esta em style, onde podemos criar e manipular classes, ids e fontes do html
+#titulo_principal {
+    font-size: 50px;
+    color: brown;
+
+}
+
+.texto_cinza
+{
+    font-size: 20px;
+    color:gray;
+}
+
+.pequeno_porte
+{
+    width: 300px;
+    height: 150px;
+}
