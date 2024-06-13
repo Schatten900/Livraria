@@ -1,42 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
-#SideBar {
-    background-color: white;
-    padding: 10px;
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: first baseline;
-    justify-content: space-between;
-    height: 88vh;
-    border-radius: 0px 10px 10px 0px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Oswald", sans-serif;
 }
 
+#SideBar {
+    height: 100vh;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 0px 10px 10px 0px;
+    transition: all .5s;
+    position: fixed;
+    overflow: hidden;
+}
+#SideBarContent {
+    padding: 10px;
+}
 
-#SideBarItens {
+#SideBarItens
+{
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-    gap: 60px;
+    gap:35px;
 }
 
 .SideBarItens {
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    align-items: left;
+    padding: 8px;
+    transform: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.SideBarItens.active {
+    background-color: rgb(110, 33, 255);
+}
+
+.SideBarItens:hover:not(.active),
+#logoutButtom:hover
+{
+    background-color: white;
 }
 
 .SideBarItens a {
     text-decoration: none;
+    color: black;
     display: flex;
     align-items: center;
-    color: black;
-    gap: 10px
+    justify-content: center;
+    gap:10px;
+}
+
+.SideBarItens.active a {
+    color: white;
 }
 
 .SideBarItens a i {
@@ -44,44 +66,75 @@
     align-items: center;
     justify-content: center;
     width: 20px;
+    height: 20px;
+}
+
+.SideBarItens:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0px 2px rgba(29, 0, 82, 0.4);
+}
+
+.itemDescription 
+{
+    width: 0px;
     height: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    transition: width .6s;  
+}
+
+#SideBar.open-sidebar
+{
+    width: 160px;
+}
+
+#SideBar.open-sidebar .itemDescription
+{
+    width: 100px;
+    height: auto;
+}
+
+#SideBar.open-sidebar .itemDescription a
+{
+    justify-content: flex-start;
+    gap:10px;
 }
 
 #SideBarButtom {
+    position: absolute;
     width: 30px;
     height: 30px;
     border: none;
     cursor: pointer;
     background-color: white;
     border-radius: 5px 5px 5px 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#SideBarButtom:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 3px 3px rgba(29, 0, 82, 0.4);
 }
 
 .logoutButtom {
-    width: 100px;
-    height: 40px;
-    font-family: "Oswald", sans-serif;
-    font-size: 16px;
-    font-optical-sizing: auto;
-    font-style: normal;
-    border-radius: 8px;
-    cursor: pointer;
+    margin-top: 24px;
+    padding: 12px; 
+    border-radius: 5px;
     border: none;
-    padding: 0px 31px 0px 0px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background-color: white;
-
+    text-align:start;
+    gap:10px;
+    cursor: pointer;
+    transform: scale(1.1,1.1) 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logoutButtom a {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    color: black;
-}
-
-.logoutButtom a i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 0px;
+.logoutButtom:hover {
+    transform: scale(1.1, 1.1);
+    box-shadow: 0px 2px rgba(29, 0, 82, 0.4);
 }

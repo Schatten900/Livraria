@@ -1,41 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-#UsuarioSideBar {
-    display: flex;
+
+#user
+{
+    display:flex;
     flex-direction: column;
-    padding: 40px;
-    gap:5px
-}
-
-.user_info
-{
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.user_info a
-{
-    text-decoration: none;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: black;
-    gap: 10px
-}
-
-.user_info a i
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 0px;
+    gap:8px;
+    margin-bottom: 24px;
 }
 
 #user_Avatar {
     width: 50px;
     height: 50px;
+    object-fit: cover;
     border-radius: 25px;
 }
+
+#user_info
+{
+    display: flex;
+    flex-direction: column;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+#user_info span:last-child
+{
+    color:black;
+    font-size: 12px;
+}
+
+
 

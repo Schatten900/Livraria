@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="../styles/userSide.css" rel="stylesheet">
+    <link href="../styles/sideBar.css" rel="stylesheet">
+    <link href="../styles/header.css" rel="stylesheet">
+    <title>BookStore</title>
+</head>
+
+<body>
+    <div id="Container">
+        <div id="header">
+            <div>
+                <button id="SideBarButtom"><i id="openButtomIcon"  class="fa-solid fa-bars"></i></button>
+            </div>
+            <div id="SearchBar">
+                <input type="search" placeholder="Pesquisa de livros" id="barraPesquisa">
+                <button id="botaoPesquisa">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+
+            <nav id="topo_pagina">
+                <ul id="Itens_topo">
+                    <li class="Itens-topo">
+                        <a href="carrinho.html">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="Icon">Carrinho</span>
+                        </a>
+                    </li>
+                    <li class="Itens-topo">
+                        <a href="sobre.html">
+                            <i class="fa-solid fa-comment"></i>
+                            <span class="Icon">Sobre</span>
+                        </a>
+                    </li>
+                    <li class="Itens-topo">
+                        <a href="login.html">
+                            <i class="fa-solid fa-user"></i>
+                            <span class="Icon">Entrar</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div id="SideBar">
+            <div id="SideBarContent">
+                <div id ="user">
+                    <img src="../assets/imagens/anonimo.png" id="user_Avatar" alt="Avatar">
+                    <p class="user_info">
+                        <span  class = 'itemDescription'>
+                            Usuario
+                        </span>
+                        <i class="fa-solid fa-circle-check"></i>
+                    </p>
+                </div>
+                <ul id="SideBarItens">
+                    <li class="SideBarItens active">
+                        <a href="index.html">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class = 'itemDescription'>Loja</span>
+                        </a>
+                    </li>
+                    <li class="SideBarItens">
+                        <a href="estoque.html">
+                            <i class="fa-solid fa-store"></i>
+                            <span  class = 'itemDescription'>Estoque</span>
+                        </a>
+                    </li>
+                    <li class="SideBarItens">
+                        <a href="historico.html">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <span  class = 'itemDescription'>Historico</span>
+                        </a>
+                    </li>
+                    <li class="SideBarItens">
+                        <a href="favoritos.html">
+                            <i class="fa-solid fa-star"></i>
+                            <span class = 'itemDescription'>Favoritos</span>
+                        </a>
+                    </li>
+                </ul>
+                <div>
+                    <button class="logoutButtom">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span class = 'itemDescription'>Sair</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="ProductScreen">
+
+        </div>
+    </div>
+
+    <script src="../../javascript/sideBar.js"></script>
+</body>
+
+</html>
