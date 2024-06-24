@@ -1,4 +1,4 @@
-from python.dominios.Usuario import *
+from dominios.Usuario import *
 
 class TUUser:
     def __init__(self):

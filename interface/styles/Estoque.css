@@ -1,0 +1,84 @@
+#Container
+{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    gap:20px
+}
+
+#managmentProducts
+{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.managmentButtom
+{
+    width: 130px;
+    height: 35px;
+    background-color: rgb(110, 33, 255);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: transform 1s ease;
+}
+
+.managmentButtom:hover
+{
+    transform: scale(1.05,1.05);
+}
+
+#main-content
+{
+    flex:1;
+    padding: 20px;
+    overflow-y: auto;
+}
+.products {
+
+    padding: 5px;
+    padding-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-radius: 8px;
+}
+
+.productItem {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    flex: 1 1 calc(25% - 20px);
+    min-height: 280px;
+    max-width: calc(25% - 20px);
+    display: flex;
+    flex-direction: column;
+    transition: transform 1.2s ease;
+}
+
+.productItem:hover
+{
+    transform: scale(1.05,1.05);
+}
+
+#precoProduct
+{
+    font-family: "Oswald", sans-serif;
+    font-size:larger;
+    color: black;
+}
+
+#infoProduct
+{
+    font-family: "Oswald", sans-serif;
+    font-size: medium;
+    color:grey;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}

@@ -45,12 +45,11 @@ class Senha(dominio):
     def validar(self,senha):
         if (len(senha) != 6):
             raise ValueError("Invalid Password")
-        self.checkUnique(senha)
-        self.checkIncreasing(senha)
-        self.checkDecreasing(senha)
+        self.__checkUnique(senha)
+        self.__checkIncreasing(senha)
+        self.__checkDecreasing(senha)
 
-
-    def checkUnique(self,senha):
+    def __checkUnique(self,senha):
         dic = {}
         for digit in senha:
             if digit not in dic:
@@ -62,7 +61,7 @@ class Senha(dominio):
             if dic[digit] > 1:
                 raise ValueError("Invalid Password")
             
-    def checkIncreasing(self,senha):
+    def __checkIncreasing(self,senha):
         cont = 0
         for i in range(len(senha)-1):
 
@@ -77,7 +76,7 @@ class Senha(dominio):
             if cont > 3:
                 raise ValueError("Invalid Password")
             
-    def checkDecreasing(self,senha):
+    def __checkDecreasing(self,senha):
         cont = 0
         atual = int(senha[0])
         for i in range(len(senha)-1):
@@ -103,13 +102,19 @@ class Email(dominio):
         if (not validEmail):
             raise ValueError("Invalid E-mail")
       
-class User(dominio):
+class User():
     def __init__(self):
         self.name = Nome()
         self.email = Email()
         self.password = Senha()
+    
+    def validar(self,usuario,email,senha):
+        self.name.validar(usuario)
+        self.email.validar(email)
+        self.password.validar(senha)
 
     def setUser(self,usuario,email,senha):
+        self.validar(usuario,email,senha)
         self.name.set(usuario)
         self.email.set(email)
         self.password.set(senha)

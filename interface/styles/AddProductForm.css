@@ -1,0 +1,25 @@
+#addProductForm
+{
+    display: none;
+    padding:20px;
+    border-radius: 8px; 
+}
+
+#addProductContainer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: center;
+}
+
+.textoForm
+{
+    border-radius: 8px;
+    border: none;
+    font-family: "Oswald", sans-serif;
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}

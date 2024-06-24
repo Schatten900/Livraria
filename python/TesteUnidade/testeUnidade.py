@@ -1,5 +1,4 @@
-from python.dominios.bancoDados import *
-from python.dominios.Usuario import *
+from dominios.Usuario import *
 
 class TUName:
     def __init__(self):

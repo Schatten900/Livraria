@@ -11,96 +11,117 @@
     <link href="../styles/userSide.css" rel="stylesheet">
     <link href="../styles/sideBar.css" rel="stylesheet">
     <link href="../styles/header.css" rel="stylesheet">
+    <link href="../styles/Estoque.css" rel="stylesheet">
     <title>BookStore</title>
 </head>
 
 <body>
-    <div id="Container">
-        <div id="header">
-            <div>
-                <button id="SideBarButtom"><i id="openButtomIcon"  class="fa-solid fa-bars"></i></button>
-            </div>
-            <div id="SearchBar">
-                <input type="search" placeholder="Pesquisa de livros" id="barraPesquisa">
-                <button id="botaoPesquisa">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-
-            <nav id="topo_pagina">
-                <ul id="Itens_topo">
-                    <li class="Itens-topo">
-                        <a href="carrinho.html">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="Icon">Carrinho</span>
-                        </a>
-                    </li>
-                    <li class="Itens-topo">
-                        <a href="sobre.html">
-                            <i class="fa-solid fa-comment"></i>
-                            <span class="Icon">Sobre</span>
-                        </a>
-                    </li>
-                    <li class="Itens-topo">
-                        <a href="login.html">
-                            <i class="fa-solid fa-user"></i>
-                            <span class="Icon">Entrar</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </nav>
+    <header id="header">
+        <div>
+            <button id="SideBarButtom"><i id="openButtomIcon" class="fa-solid fa-bars"></i></button>
         </div>
+        <div id="SearchBar">
+            <input type="search" placeholder="Pesquisa de livros" id="barraPesquisa">
+            <button id="botaoPesquisa">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <nav id="topo_pagina">
+            <ul id="Itens_topo">
+                <li class="Itens-topo">
+                    <a href="carrinho.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="Icon">Carrinho</span>
+                    </a>
+                </li>
+                <li class="Itens-topo">
+                    <a href="sobre.html">
+                        <i class="fa-solid fa-comment"></i>
+                        <span class="Icon">Sobre</span>
+                    </a>
+                </li>
+                <li class="Itens-topo">
+                    <a href="login.html">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="Icon">Entrar</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+    <div id="Container">
+        
         <div id="SideBar">
             <div id="SideBarContent">
-                <div id ="user">
+                <div id="user">
                     <img src="../assets/imagens/anonimo.png" id="user_Avatar" alt="Avatar">
                     <p class="user_info">
-                        <span  class = 'itemDescription'>
+                        <span class='itemDescription'>
                             Usuario
                         </span>
                         <i class="fa-solid fa-circle-check"></i>
                     </p>
                 </div>
                 <ul id="SideBarItens">
-                    <li class="SideBarItens active">
+                    <li class="SideBarItens">
                         <a href="index.html">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span class = 'itemDescription'>Loja</span>
+                            <span class='itemDescription'>Loja</span>
                         </a>
                     </li>
-                    <li class="SideBarItens">
+                    <li class="SideBarItens active">
                         <a href="estoque.html">
                             <i class="fa-solid fa-store"></i>
-                            <span  class = 'itemDescription'>Estoque</span>
+                            <span class='itemDescription'>Estoque</span>
                         </a>
                     </li>
                     <li class="SideBarItens">
                         <a href="historico.html">
                             <i class="fa-solid fa-clock-rotate-left"></i>
-                            <span  class = 'itemDescription'>Historico</span>
+                            <span class='itemDescription'>Historico</span>
                         </a>
                     </li>
                     <li class="SideBarItens">
                         <a href="favoritos.html">
                             <i class="fa-solid fa-star"></i>
-                            <span class = 'itemDescription'>Favoritos</span>
+                            <span class='itemDescription'>Favoritos</span>
                         </a>
                     </li>
                 </ul>
                 <div>
                     <button class="logoutButtom">
                         <i class="fa-solid fa-right-from-bracket"></i>
-                        <span  class = 'itemDescription'>Sair</span>
+                        <span class='itemDescription'>Sair</span>
                     </button>
                 </div>
             </div>
 
         </div>
 
-        <div id="ProductScreen">
+        <main id="main-content">
+            <div id = 'managmentProducts'>
+                <div>
+                    <button id = 'addProduct' class="managmentButtom">Adicionar produtos</button>
+                    <button id = 'removeProduct' class="managmentButtom">Remover produtos</button>
+                </div>
+            </div>
+            <div class = 'products'>
+                <div class = 'productItem'>
+                    <img src="../assets/imagens/fern.png" alt="">
+                    <span id="infoProduct">Texto Nome item</span>
+                    <span id ="precoProduct">R$ 1.500</span>
+                    <span id = "productQntd"> Quantidade: </span>
+                    <div>
+                        <input type="checkbox">
+                    </div>
+                </div>
+                
+                
+            </div>
 
-        </div>
+        </main>
     </div>
 
     <script src="../../javascript/sideBar.js"></script>

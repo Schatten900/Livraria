@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addLoginFields(form) {
-        if (!document.getElementById('username')) {
-            const userField = document.createElement('div');
-            userField.classList.add("formField");
-            userField.innerHTML = "<input type='text' id='username' placeholder='Username'>";
+        if (!document.getElementById('email')) {
+            const emailField = document.createElement('div');
+            emailField.classList.add("formField");
+            emailField.innerHTML = "<input type='email' id='email' placeholder='Email'>";
 
-            form.appendChild(userField);
-            const username = document.getElementById('username');
-            username.classList.add("inputField");
+            form.appendChild(emailField);
+            const email = document.getElementById('email');
+            email.classList.add("inputField");
         }
 
         if (!document.getElementById('password')) {
@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             password.classList.add("inputField");
         }
 
-        if (!document.getElementById('buttomEnter')) {
+        if (!document.getElementById('buttomLogin')) {
             const buttomEnter = document.createElement('button');
-            buttomEnter.id = 'buttomEnter';
+            buttomEnter.id = 'buttomLogin';
             buttomEnter.textContent = "Login";
             buttomEnter.classList.add("buttomLogin");
             form.appendChild(buttomEnter);
@@ -95,9 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
             confirm.classList.add("inputField");
         }
 
-        if (!document.getElementById('buttomEnter')) {
+        if (!document.getElementById('buttomRegister')) {
             const buttomEnter = document.createElement('button');
-            buttomEnter.id = "buttomEnter";
+            buttomEnter.id = "buttomRegister";
             buttomEnter.textContent = "Registrar";
             buttomEnter.classList.add("buttomLogin");
             form.appendChild(buttomEnter);
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function removeLoginFields(form) {
         const userField = document.getElementById('username');
         const passwordField = document.getElementById('password');
-        const buttomEnter = document.getElementById('buttomEnter');
+        const buttomEnter = document.getElementById('buttomLogin');
 
         if (userField) {
             form.removeChild(userField.parentElement);
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function removeRegisterFields(form) {
         const userField = document.getElementById('username');
         const passwordField = document.getElementById('password');
-        const buttomEnter = document.getElementById('buttomEnter');
+        const buttomEnter = document.getElementById('buttomRegister');
         const confirmField = document.getElementById('confirmPassword');
         const emailField = document.getElementById('email')
 

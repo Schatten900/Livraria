@@ -2,36 +2,38 @@ import requests
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+dotenv_path='.env'
+load_dotenv(dotenv_path=dotenv_path)
 
 class Book():
     def __init__(self):
         self.titulo = ''
         self.autor = ''
         self.descricao = ''
-        self.quantidade = 0
         self.price = 0
-        self.tag = []
+        self.isbn = ""
 
-    def searchbook(self,titulo,autor):
+    def getISBN(self,titulo,autor):
         url = os.getenv('API_URL')
         params = {'q': titulo, 'key': os.getenv('API_KEY')}
         response = requests.get(url, params = params)
 
         if (not response.status_code == 200):  
             raise ValueError("Error to connect")
-        #cada livro tem uma chave VolumeInfo que contem titulo nome e tal
+
         data = response.json()
-        #print(data)
         if 'items' in data:
             for item in data['items']:
                 volumeInfo = item.get('volumeInfo')
                 title = volumeInfo.get('title')
                 author = volumeInfo.get('authors',[])
                 if titulo.lower() == title.lower() and autor.lower() in [a.lower() for a in author]:
-                    return
-                
-        raise ValueError("Error to connect")
+                    industryIdentifiers = item.get('industyIdentifiers')
+                    for elem in industryIdentifiers:
+                        ISBN = elem.get('identifier')
+                        return ISBN
+        else:      
+            raise ValueError("Error to connect")
     
     def setAuthor(self,autor):
         self.autor = autor
@@ -45,8 +47,8 @@ class Book():
     def setDescription(self,description):
         self.descricao = description
 
-    def setTag(self,tag):
-        self.tag.append(tag)
+    def setISBN(self,ISBN):
+        self.isbn = ISBN
 
     def getTitle(self):
         return self.titulo
@@ -59,6 +61,7 @@ class Book():
     
     def getPrice(self):
         return self.price
-    
-    def getTag(self):
-        return self.tag
+
+
+livro = Book() 
+livro.getISBN('harry potter','J.K. Rowling')
