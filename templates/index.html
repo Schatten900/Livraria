@@ -8,10 +8,10 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link href="../styles/userSide.css" rel="stylesheet">
-    <link href="../styles/sideBar.css" rel="stylesheet">
-    <link href="../styles/header.css" rel="stylesheet">
-    <link href="../styles/Estoque.css" rel="stylesheet">
+    <link href="{{url_for('static',filename='styles/userSide.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='styles/SideBar.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='styles/header.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='styles/Estoque.css')}}" rel="stylesheet">
     <title>BookStore</title>
 </head>
 
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li class="Itens-topo">
-                    <a href="login.html">
+                    <a href="{{url_for('loginPage')}}">
                         <i class="fa-solid fa-user"></i>
                         <span class="Icon">Entrar</span>
                     </a>
@@ -52,39 +52,39 @@
         </nav>
     </header>
     <div id="Container">
-        
+
         <div id="SideBar">
             <div id="SideBarContent">
                 <div id="user">
-                    <img src="../assets/imagens/anonimo.png" id="user_Avatar" alt="Avatar">
+                    <img src="{{url_for('static',filename='assets/imagens/fern.png')}}" id="user_Avatar" alt="Avatar">
                     <p class="user_info">
                         <span class='itemDescription'>
-                            Usuario
+                            {{username}}
                         </span>
                         <i class="fa-solid fa-circle-check"></i>
                     </p>
                 </div>
                 <ul id="SideBarItens">
-                    <li class="SideBarItens">
-                        <a href="index.html">
+                    <li class="SideBarItens active">
+                        <a href="{{url_for('storePage')}}">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span class='itemDescription'>Loja</span>
                         </a>
                     </li>
-                    <li class="SideBarItens">
-                        <a href="estoque.html">
+                    <li class="SideBarItens ">
+                        <a href="{{url_for('estoquePage')}}">
                             <i class="fa-solid fa-store"></i>
                             <span class='itemDescription'>Estoque</span>
                         </a>
                     </li>
                     <li class="SideBarItens">
-                        <a href="historico.html">
+                        <a href="{{url_for('histPage')}}">
                             <i class="fa-solid fa-clock-rotate-left"></i>
                             <span class='itemDescription'>Historico</span>
                         </a>
                     </li>
-                    <li class="SideBarItens active">
-                        <a href="favoritos.html">
+                    <li class="SideBarItens">
+                        <a href="{{url_for('favPage')}}">
                             <i class="fa-solid fa-star"></i>
                             <span class='itemDescription'>Favoritos</span>
                         </a>
@@ -101,30 +101,31 @@
         </div>
 
         <main id="main-content">
-            <div id = 'managmentProducts'>
+            <div id='managmentProducts'>
                 <div>
-                    <button id = 'addProduct' class="managmentButtom">Adicionar produtos</button>
-                    <button id = 'removeProduct' class="managmentButtom">Remover produtos</button>
+                    <button id='addProduct' class="managmentButtom">Adicionar produtos</button>
+                    <button id='removeProduct' class="managmentButtom">Remover produtos</button>
                 </div>
             </div>
-            <div class = 'products'>
-                <div class = 'productItem'>
+            <div class='products'>
+                {% for book in Books %}
+                <div class='productItem'>
                     <img src="../assets/imagens/fern.png" alt="">
-                    <span id="infoProduct">Texto Nome item</span>
-                    <span id ="precoProduct">R$ 1.500</span>
-                    <span id = "productQntd"> Quantidade: </span>
+                    <span id="infoProduct">{{book[0]}}</span>
+                    <span id="precoProduct">R$ {{book[1]}}</span>
+                    <span id="productQntd"> Quantidade: {{book[2]}}</span>
                     <div>
                         <input type="checkbox">
                     </div>
                 </div>
-                
-                
+                {% endfor %}
+
             </div>
 
         </main>
     </div>
 
-    <script src="../../javascript/sideBar.js"></script>
+    <script src="{{url_for('static',filename='javascript/sideBar.js')}}"></script>
 </body>
 
 </html>

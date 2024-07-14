@@ -1,13 +1,7 @@
-document.getElementById("removeProduct").addEventListener('click',function()
-{
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    removeDiv(checkboxes);
-        
-});
+function RemoveBookInStock(){
 
-function removeDiv(checkboxes)
-{
     let cont = 0;
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         if (checkbox.checked)
         {
@@ -21,4 +15,5 @@ function removeDiv(checkboxes)
     {
         alert("Selecione ao menos um produto");
     }
+
 }

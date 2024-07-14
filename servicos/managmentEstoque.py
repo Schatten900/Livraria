@@ -1,4 +1,4 @@
-from bancoDados.connection import executeQuery,Error
+from servicos.connection import executeQuery,Error
 from dominios.Livros import Book
 
 def addBookEstoque(ID,titulo,autor,descricao,quantidade,preco):
@@ -71,5 +71,20 @@ def editBookEstoque(ISBN,ID,quantidade=None,preco=None):
             executeQuery(QUERY,params)
 
         print("Modificado com sucesso")
+    except ValueError as e:
+        print(e)
+
+def selectBooks(ID_USER):
+    try:
+        QUERY = """
+        SELECT L.titulo, E.preco, E.quantidade
+        FROM Estoque_livro as E
+        INNER JOIN Livro as L ON E.ISBN_Livro = L.ISBN
+        WHERE E.ID_Estoque = %s
+        """ 
+    
+        books = executeQuery(QUERY,ID_USER)
+        return books
+    
     except ValueError as e:
         print(e)

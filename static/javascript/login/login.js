@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buttomEnter.id = 'buttomLogin';
             buttomEnter.textContent = "Login";
             buttomEnter.classList.add("buttomLogin");
+            buttomEnter.addEventListener('click',loginCheck);
             form.appendChild(buttomEnter);
         }
     }
@@ -100,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buttomEnter.id = "buttomRegister";
             buttomEnter.textContent = "Registrar";
             buttomEnter.classList.add("buttomLogin");
+            buttomEnter.addEventListener('click',addRegister)
             form.appendChild(buttomEnter);
         }
     }

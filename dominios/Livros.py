@@ -7,9 +7,9 @@ load_dotenv(dotenv_path=dotenv_path)
 
 class Book():
     def __init__(self):
-        self.titulo = ''
-        self.autor = ''
-        self.descricao = ''
+        self.titulo = ""
+        self.autor = ""
+        self.descricao = ""
         self.price = 0
         self.isbn = ""
 
@@ -19,19 +19,20 @@ class Book():
         response = requests.get(url, params = params)
 
         if (not response.status_code == 200):  
-            raise ValueError("Error to connect")
+            raise ValueError("Error to connect: status code{}".format(response.status_code))
 
         data = response.json()
         if 'items' in data:
             for item in data['items']:
-                volumeInfo = item.get('volumeInfo')
-                title = volumeInfo.get('title')
+                volumeInfo = item.get('volumeInfo',{})
+                title = volumeInfo.get('title',"")
                 author = volumeInfo.get('authors',[])
+
                 if titulo.lower() == title.lower() and autor.lower() in [a.lower() for a in author]:
-                    industryIdentifiers = item.get('industyIdentifiers')
+                    industryIdentifiers = volumeInfo.get('industryIdentifiers')
                     for elem in industryIdentifiers:
-                        ISBN = elem.get('identifier')
-                        return ISBN
+                        if elem.get('type') in ['ISBN_10','ISBN_13']:
+                            return elem.get('identifier')
         else:      
             raise ValueError("Error to connect")
     
@@ -61,7 +62,3 @@ class Book():
     
     def getPrice(self):
         return self.price
-
-
-livro = Book() 
-livro.getISBN('harry potter','J.K. Rowling')

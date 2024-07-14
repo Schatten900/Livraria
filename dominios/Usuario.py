@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 class dominio(ABC):
     def __init__(self):
-        self.valor = None
+        self.valor = ""
 
     @abstractmethod
     def validar(self,valor):
@@ -107,17 +107,19 @@ class User():
         self.name = Nome()
         self.email = Email()
         self.password = Senha()
+        self.idUser = 0
     
     def validar(self,usuario,email,senha):
         self.name.validar(usuario)
         self.email.validar(email)
         self.password.validar(senha)
 
-    def setUser(self,usuario,email,senha):
+    def setUser(self,usuario,email,senha,id):
         self.validar(usuario,email,senha)
         self.name.set(usuario)
         self.email.set(email)
         self.password.set(senha)
+        self.idUser = id
 
     def getName(self):
         return self.name.get()
@@ -127,3 +129,6 @@ class User():
     
     def getPassword(self):
         return self.password.get()
+    
+    def getID(self):
+        return self.idUser
