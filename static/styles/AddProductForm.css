@@ -21,9 +21,17 @@
     margin-bottom: 20px;
 }
 
+#InfoLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
 
-#qntdLivros {
-    
-    width: 100px;
-    margin-bottom: 30px;
+.inputLabel {
+    width: 150px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
 }

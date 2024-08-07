@@ -108,18 +108,20 @@ class User():
         self.email = Email()
         self.password = Senha()
         self.idUser = 0
+        self.saldo = 0
     
     def validar(self,usuario,email,senha):
         self.name.validar(usuario)
         self.email.validar(email)
         self.password.validar(senha)
 
-    def setUser(self,usuario,email,senha,id):
+    def setUser(self,usuario,email,senha,id,saldo):
         self.validar(usuario,email,senha)
         self.name.set(usuario)
         self.email.set(email)
         self.password.set(senha)
         self.idUser = id
+        self.saldo = saldo
 
     def getName(self):
         return self.name.get()
@@ -132,3 +134,6 @@ class User():
     
     def getID(self):
         return self.idUser
+    
+    def getSaldo(self):
+        return self.saldo

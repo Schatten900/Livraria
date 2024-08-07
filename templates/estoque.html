@@ -60,7 +60,7 @@
                     <img src="{{url_for('static',filename='assets/imagens/fern.png')}}" id="user_Avatar" alt="Avatar">
                     <p class="user_info">
                         <span class='itemDescription'>
-                            Usuario
+                            {{username}}
                         </span>
                         <i class="fa-solid fa-circle-check"></i>
                     </p>
@@ -105,43 +105,47 @@
             <div id='managmentProducts'>
                 <div>
                     <button id='addProduct' class="managmentButtom">Adicionar produtos</button>
-                    <button id='removeProduct' class="managmentButtom" onclick="RemoveBookInStock()">Remover produtos</button>
+                    <button id='removeProductButtom' class="managmentButtom">Remover produtos</button>
                 </div>
             </div>
             <div>
                 <form id="addProductForm">
                     <div id="addProductContainer">
-                        <input type="text" placeholder="Titulo" class="textoForm">
-                        <input type="text" placeholder="Autor" class="textoForm">
-                        <label for="text">Quantidade</label>
-                        <input type="number" min="1" max="30" id='qntdLivros'>
-                        <textarea name="descricao" id="descricao" row="5" cols="100"
-                            placeholder=" Descrição do livro"></textarea>
-                        <button id='addProductButtom' class="managmentButtom" onlick="AddBookInStock()">Adicionar</button>
+                        <input type="text" placeholder="Titulo" class="textoForm" id="inputTitle">
+                        <input type="text" placeholder="Autor" class="textoForm" id="inputAuthor">
+                        <div id='InfoLabel'>
+                            <label for="text">Quantidade</label>
+                            <input type="number" min="1" max="30" class='inputLabel' id='inputQntd'>
+                        </div>
+                        <div id='InfoLabel'>
+                            <label for="text">Preco (Coins)</label>
+                            <input type="number" min="1" step="any" class="inputLabel" id="inputPrice" />
+                        </div>
+                        <button id='addProductButtom' class="managmentButtom">Adicionar</button>
                     </div>
                 </form>
 
             </div>
             <div class='products'>
                 {% for book in Books %}
-                    <div class='productItem'>
-                        <img src="{{url_for('static',filename='assets/imagens/fern.png')}}" alt="Avatar">
-                        <span id="infoProduct">{{book[0]}}</span>
-                        <span id="precoProduct">R$ {{book[1]}}</span>
-                        <span id="productQntd">Quantidade: {{book[2]}}: </span>
-                        <div>
-                            <input type="checkbox">
-                        </div>
+                <div class='productItem'>
+                    <img src="{{url_for('static',filename='assets/imagens/fern.png')}}" alt="Avatar">
+                    <span id="titleProduct">{{book[0]}}</span>
+                    <span id="authorProduct">{{book[1]}}</span>
+                    <span id="precoProduct">R$ {{book[2]}}</span>
+                    <span id="productQntd">Quantidade: {{book[3]}} </span>
+                    <div>
+                        <input type="checkbox">
                     </div>
+                </div>
                 {% endfor %}
             </div>
-                
-
         </main>
     </div>
 
-    <script src="{{url_for('static',filename='javascript/estoque/removeProductForm.js')}}"></script>
     <script src="{{url_for('static',filename='javascript/estoque/addProductForm.js')}}"></script>
+    <script src="{{url_for('static',filename='javascript/estoque/addProductInStock.js')}}"></script>
+    <script src="{{url_for('static',filename='javascript/estoque/removeProductInStock.js')}}"></script>
     <script src="{{url_for('static',filename='javascript/sideBar.js')}}"></script>
 </body>
 

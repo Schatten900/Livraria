@@ -7,49 +7,49 @@ load_dotenv(dotenv_path=dotenv_path)
 
 class Book():
     def __init__(self):
+        self.isbn = ""
         self.titulo = ""
         self.autor = ""
         self.descricao = ""
-        self.price = 0
-        self.isbn = ""
 
-    def getISBN(self,titulo,autor):
+    def setLivro(self,titulo,autor):
         url = os.getenv('API_URL')
-        params = {'q': titulo, 'key': os.getenv('API_KEY')}
-        response = requests.get(url, params = params)
+        params = {'q': f'intitle:{titulo}+inauthor:{autor}', 'key': os.getenv('API_KEY')}
+        response = requests.get(url,params = params)
 
-        if (not response.status_code == 200):  
+        if (not response.status_code == 200):
             raise ValueError("Error to connect: status code{}".format(response.status_code))
-
+        
         data = response.json()
         if 'items' in data:
             for item in data['items']:
                 volumeInfo = item.get('volumeInfo',{})
-                title = volumeInfo.get('title',"")
-                author = volumeInfo.get('authors',[])
+                self.titulo = volumeInfo.get('title')
+                self.descricao = volumeInfo.get('description',"")
+                autores = volumeInfo.get('authors',[])
+                industryIdentifiers = volumeInfo.get('industryIdentifiers',[])
+                for elem in industryIdentifiers:
+                    if elem.get('type') in ['ISBN_13']:
+                        self.isbn =  elem.get('identifier')
+                        break
+                    if elem.get('type') in ['ISBN_10']:
+                        self.isbn = elem.get('identifier')
+                        break
+                for elem in autores:
+                    self.autor = elem
+                    break
 
-                if titulo.lower() == title.lower() and autor.lower() in [a.lower() for a in author]:
-                    industryIdentifiers = volumeInfo.get('industryIdentifiers')
-                    for elem in industryIdentifiers:
-                        if elem.get('type') in ['ISBN_10','ISBN_13']:
-                            return elem.get('identifier')
-        else:      
-            raise ValueError("Error to connect")
+                if (self.getAuthor() and self.getISBN() and self.getTitle and self.getDescription()):
+                    return
     
     def setAuthor(self,autor):
         self.autor = autor
 
-    def setPrice(self,price):
-        self.price = price
-
     def setTitle(self,title):
         self.titulo = title 
 
-    def setDescription(self,description):
-        self.descricao = description
-
-    def setISBN(self,ISBN):
-        self.isbn = ISBN
+    def getISBN(self):
+        return self.isbn
 
     def getTitle(self):
         return self.titulo
@@ -57,8 +57,6 @@ class Book():
     def getAuthor(self):
         return self.autor
     
-    def getQuantidade(self):
-        return self.autor
+    def getDescription(self):
+        return self.descricao
     
-    def getPrice(self):
-        return self.price

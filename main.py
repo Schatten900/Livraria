@@ -38,15 +38,44 @@ def histPage():
         return render_template('historico.html')
     return redirect(url_for('loginPage'))
 
-@app.route('/estoque')
+@app.route('/estoque',methods=['GET','POST'])
 def estoquePage():
     username = None
+    #checar se o usuario ja foi logado
     if 'userID' in session:
+        estoque = Estoque()
         idUser = session['userID']
-        email = session['Email']
+        estoque.set(idUser)
         username = session['username']
-        livros = selectBooks(idUser)
-        return render_template('estoque.html',Books=livros,Username = session['userID'])
+        if request.method == 'POST':
+            data = request.json
+            titulo = data.get('title')
+            autor = data.get('author')
+            ACTION = data.get('action')
+            if ACTION == 'add':
+                quantidade = data.get('quantity')
+                preco = float(data.get('price'))
+                adicionou = estoque.adicionar(titulo,autor,quantidade,preco)
+                if (adicionou):
+                    return jsonify({"message":"sucesso ao adicionar","status":"sucess"}),200
+                return jsonify({"message":"Erro na adicao","status":"fail"}),401
+
+            elif ACTION == 'remove':
+                removeu = estoque.remover(titulo,autor)
+                if removeu:
+                    return jsonify({"message":"sucesso ao remover","status":"sucess"}),200
+                return jsonify({"message":"Erro ao remover","status":"fail"}),401
+            else:
+                return jsonify({"message":"Acao invalida","status":"fail"}),401
+        
+        #Para mostrar todos os livros do estoque
+        elif request.method == 'GET':
+            livros = estoque.select()
+            if livros:
+                return render_template('estoque.html',Books=livros,username = username)
+            return render_template('estoque.html',username=username)
+        
+    #caso o usuario não esteja logado
     return redirect(url_for('loginPage'))
 
 @app.route('/login',methods=['GET','POST'])
@@ -54,31 +83,38 @@ def loginPage():
     if request.method == 'POST':
         data = request.json
         ACTION = data.get('action')
+        EMAIL = data.get('email')
+        PASSWORD = data.get('password')
+
         if ACTION == 'login':
-            EMAIL = data.get('email')
-            PASSWORD = data.get('password')
-            user = loginUser(EMAIL,PASSWORD)
+            user = Usuario()
+            user.login(EMAIL,PASSWORD)
             if user:
-                session['userID'] = user.getID()
-                session['username'] = user.getName()
-                session['Email'] = user.getEmail()
+                session['userID'] = user.getUser().getID()
+
+                session['username'] = user.getUser().getName()
+
+                session['Email'] = user.getUser().getEmail()
+
                 return jsonify({"message":"Login Valido","status":"sucess","redirect":url_for('storePage')}),200
             
             return jsonify({"message":"Login invalido","status":"fail"}),401
         
         elif ACTION == 'register':
             USERNAME = data.get('username')
-            EMAIL = data.get('email')
-            PASSWORD = data.get('password')
-            CONFIRM = data.get('confirm')
-
-            user = registerUser(USERNAME,EMAIL,PASSWORD,CONFIRM)
+            user = Usuario()
+            user.registrar(USERNAME,EMAIL,PASSWORD)
             if user:
-                session['userID'] = user.getID()
-                session['username'] = user.getName()
-                session['Email'] = user.getEmail()
-                return jsonify({"message":"Registro Valido","status":"sucess","redirect":url_for('storePage')}),200
-            
+                session['userID'] = user.getUser().getID()
+                session['username'] = user.getUser().getName()
+                session['Email'] = user.getUser().getEmail()
+
+                #Criar o estoque do usuario no BD
+                estoque = Estoque()
+                idAux = user.getUser().getID()
+                estoque.set(idAux)
+                if estoque.criar():
+                    return jsonify({"message":"Registro Valido","status":"sucess","redirect":url_for('storePage')}),200
             return jsonify({"message":"Registro invalido","status":"fail"}),401
         else:
             return jsonify({"message": "Ação inválida", "status": "fail"}), 400
