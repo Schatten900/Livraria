@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('addProductForm');
 
-    document.getElementById('addProduct').addEventListener('click',function()
-    {
+    document.getElementById('addProduct').addEventListener('click',function(){
         showFormAdd(form);
     });
 
-    document.getElementById('addProductButtom').addEventListener('click',function()
-    {
+    document.getElementById('addProductButtom').addEventListener('click',function(){
         showFormAdd(form);
     });
 
+    document.getElementById("genreButtom").addEventListener('click',function(){
+        showFormAdd(form);
+    });
 
 });
 

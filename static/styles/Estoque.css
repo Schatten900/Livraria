@@ -1,14 +1,12 @@
-#Container
-{
+#Container {
     padding-top: 50px;
     display: flex;
     flex-direction: row;
     height: 100vh;
-    gap:20px
+    gap: 20px
 }
 
-#managmentProducts
-{
+#managmentProducts {
     width: 100%;
     height: 60px;
     display: flex;
@@ -16,8 +14,8 @@
     align-items: center;
     justify-content: space-around;
 }
-.managmentButtom
-{
+
+.managmentButtom {
     width: 130px;
     height: 35px;
     background-color: rgb(110, 33, 255);
@@ -27,17 +25,16 @@
     transition: transform 1s ease;
 }
 
-.managmentButtom:hover
-{
-    transform: scale(1.05,1.05);
+.managmentButtom:hover {
+    transform: scale(1.05, 1.05);
 }
 
-#main-content
-{
-    flex:1;
+#main-content {
+    flex: 1;
     padding: 20px;
     overflow-y: auto;
 }
+
 .products {
 
     padding: 5px;
@@ -61,24 +58,61 @@
     transition: transform 1.2s ease;
 }
 
-.productItem:hover
-{
-    transform: scale(1.05,1.05);
+.productItem:hover {
+    transform: scale(1.05, 1.05);
 }
 
-#precoProduct
-{
+#precoProduct {
     font-family: "Oswald", sans-serif;
-    font-size:larger;
+    font-size: larger;
     color: black;
 }
 
-#titleProduct
-{
+#titleProduct {
     font-family: "Oswald", sans-serif;
     font-size: medium;
-    color:grey;
+    color: grey;
     white-space: nowrap;
-    overflow:hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
+}
+
+#GenerosLabel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+}
+
+#genresForm {
+    display: none;
+    margin-top: 25px;
+}
+
+.generosContainer {
+    border-radius: 8px;
+    max-height: 200px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.generosContainer:hover {
+    background-color: gray;
+}
+
+#generosContainer {
+    width: 500px;
+}
+
+.genreItem {
+    flex: 1 1 calc(25% - 20px);
+    max-width: calc(25% - 20px);
+}
+
+.generosText {
+    font-size: 20px;
+    font-family: "Oswald", sans-serif;
 }

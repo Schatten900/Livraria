@@ -11,6 +11,8 @@ class Book():
         self.titulo = ""
         self.autor = ""
         self.descricao = ""
+        self.Thumbnail = ""
+        #self.generos = []
 
     def setLivro(self,titulo,autor):
         url = os.getenv('API_URL')
@@ -22,12 +24,14 @@ class Book():
         
         data = response.json()
         if 'items' in data:
+            #print(data)
             for item in data['items']:
                 volumeInfo = item.get('volumeInfo',{})
                 self.titulo = volumeInfo.get('title')
                 self.descricao = volumeInfo.get('description',"")
                 autores = volumeInfo.get('authors',[])
                 industryIdentifiers = volumeInfo.get('industryIdentifiers',[])
+
                 for elem in industryIdentifiers:
                     if elem.get('type') in ['ISBN_13']:
                         self.isbn =  elem.get('identifier')
@@ -35,12 +39,19 @@ class Book():
                     if elem.get('type') in ['ISBN_10']:
                         self.isbn = elem.get('identifier')
                         break
-                for elem in autores:
-                    self.autor = elem
-                    break
+
+                if autores:
+                    self.autor = autores[0]
+                
+                imagens = volumeInfo.get('imageLinks',{})
+                if "thumbnail" in imagens:
+                    self.Thumbnail = imagens.get('thumbnail')
+
+                #categories = volumeInfo.get('categories',{})
+                #print(categories)
 
                 if (self.getAuthor() and self.getISBN() and self.getTitle and self.getDescription()):
-                    return
+                    return 
     
     def setAuthor(self,autor):
         self.autor = autor
@@ -59,4 +70,7 @@ class Book():
     
     def getDescription(self):
         return self.descricao
+    
+    def getThumbnail(self):
+        return self.Thumbnail
     

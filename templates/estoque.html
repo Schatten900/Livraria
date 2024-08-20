@@ -121,6 +121,14 @@
                             <label for="text">Preco (Coins)</label>
                             <input type="number" min="1" step="any" class="inputLabel" id="inputPrice" />
                         </div>
+                        <div class="generosContainer" id="generosContainer">
+                            {% for genre in Genres %}
+                            <div id="genreItem  ">
+                                <input type="checkbox" id="generosBox_{{loop.index}}"class="generosBox" value="{{genre[0]}}">
+                                <label for="generosBox_{{loop.index}}" id="generosLabel">{{genre[0]}}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
                         <button id='addProductButtom' class="managmentButtom">Adicionar</button>
                     </div>
                 </form>
@@ -129,7 +137,7 @@
             <div class='products'>
                 {% for book in Books %}
                 <div class='productItem'>
-                    <img src="{{url_for('static',filename='assets/imagens/fern.png')}}" alt="Avatar">
+                    <img src="{{ book[4] }}" alt="Avatar">
                     <span id="titleProduct">{{book[0]}}</span>
                     <span id="authorProduct">{{book[1]}}</span>
                     <span id="precoProduct">R$ {{book[2]}}</span>

@@ -8,23 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const qntdBook = document.getElementById("inputQntd").value;
         const priceBook = document.getElementById("inputPrice").value;
 
-        console.log(titleBook);
-        console.log(authorBook);
-        console.log(qntdBook);
-        console.log(priceBook);
-
         if (qntdBook > 30)
             window.alert("Maximo de 30 livros para cadastrar.");
 
         if (!qntdBook || !priceBook || !authorBook || !titleBook)
             window.alert("Preencha todos os dados corretamente.");
 
+        let generos = [];
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox =>{
+            if (checkbox.checked){
+                //pegar a label que acompanha a checkbox
+                genero = checkbox.value
+                generos.push(genero);
+                console.log(genero)
+            }
+        })
+
         contentBook = {
             action: 'add',
             title: titleBook,
             author: authorBook,
             quantity: qntdBook,
-            price: priceBook
+            price: priceBook,
+            generos:generos
         }
 
         fetch(addBookURL, {
@@ -41,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json;
             })
             .then(data => {
-                if (data === 'sucess') {
+                if (data === 'success') {
                     console.log("Adicionado com sucesso");
                 }
                 else {

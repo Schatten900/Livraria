@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 //remove a div da tela
-                const ProductRemoved = checkbox.closest('.productItem');
+                const ProductRemoved = checkbox.closest('.generosText');
                 const parentElement = ProductRemoved.parentNode;
 
                 const titleElem = ProductRemoved.querySelector("#titleProduct");

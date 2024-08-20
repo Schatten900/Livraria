@@ -99,33 +99,39 @@
             </div>
 
         </div>
-
         <main id="main-content">
-            <div id='managmentProducts'>
-                <div>
-                    <button id='addProduct' class="managmentButtom">Adicionar produtos</button>
-                    <button id='removeProduct' class="managmentButtom">Remover produtos</button>
-                </div>
+            <div id="GenerosLabel">
+                <button id="genreButtom" class="managmentButtom" onclick="generoStock()">Generos</button>
             </div>
+            <form id="genresForm">
+                <div class="generosContainer">
+                    {% for genre in Genres %}
+                    <div id="genreItem">
+                        <input type="checkbox" id="generosBox">
+                        <span for="text" id="generosText">{{genre[0]}}</span>
+                    </div>
+                    {% endfor %}
+                    <button id="filtrarGeneroButtom" class="managmentButtom" onclick="filtrarGenero()">Filtrar</button>
+                </div>
+            </form>
             <div class='products'>
                 {% for book in Books %}
                 <div class='productItem'>
-                    <img src="../assets/imagens/fern.png" alt="">
-                    <span id="infoProduct">{{book[0]}}</span>
-                    <span id="precoProduct">R$ {{book[1]}}</span>
-                    <span id="productQntd"> Quantidade: {{book[2]}}</span>
-                    <div>
-                        <input type="checkbox">
-                    </div>
+                    <img src="{{ book[5] }}" alt="Book Cover">
+                    <span id="titleProduct">{{book[1]}}</span>
+                    <span id="authorProduct">{{book[2]}}</span>
+                    <span id="precoProduct">R$ {{book[3]}}</span>
+                    <span id="productQntd">Quantidade: {{book[4]}} </span>
+                    <span id="productEmail">Avaliação: {{book[0]}} </span>
                 </div>
                 {% endfor %}
-
             </div>
-
         </main>
     </div>
 
     <script src="{{url_for('static',filename='javascript/sideBar.js')}}"></script>
+    <script src="{{url_for('static',filename='javascript/estoque/addProductForm.js')}}"></script>
+    <script src="{{url_for('static',filename='javascript/estoque/generoForm.js')}}"></script>
 </body>
 
 </html>
