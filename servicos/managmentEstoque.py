@@ -1,4 +1,4 @@
-from servicos.connection import executeQuery,Error
+from servicos.connection import executeQuery
 from dominios.Livros import Book
 
 
@@ -12,10 +12,10 @@ class Estoque():
     def set(self,idAux):
         self.id = idAux
 
-    def criar(self):
+    def criar(self,idAux):
         try:
             QUERY = "INSERT INTO Estoque (IdEstoque,AvaliacaoEstoque) VALUES(%s,%s)"
-            params = (self.id,0,)
+            params = (int(idAux),0,)
             executeQuery(QUERY,params)
             return True
     

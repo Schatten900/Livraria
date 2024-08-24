@@ -102,6 +102,7 @@ def loginPage():
         if ACTION == 'login':
             user = Usuario()
             user.login(EMAIL,PASSWORD)
+            print(user.getUser().getName())
             if user:
                 session['userID'] = user.getUser().getID()
 
@@ -126,7 +127,8 @@ def loginPage():
                 estoque = Estoque()
                 idAux = user.getUser().getID()
                 estoque.set(idAux)
-                if estoque.criar():
+                print(estoque.get())
+                if estoque.criar(estoque.get()):
                     return jsonify({"message":"Registro Valido","status":"success","redirect":url_for('storePage')}),200
             return jsonify({"message":"Registro invalido","status":"fail"}),401
         else:

@@ -115,7 +115,7 @@ class User():
         self.email.validar(email)
         self.password.validar(senha)
 
-    def setUser(self,usuario,email,senha,id,saldo):
+    def setUser(self,usuario,email,senha,saldo,id):
         self.validar(usuario,email,senha)
         self.name.set(usuario)
         self.email.set(email)

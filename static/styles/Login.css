@@ -6,7 +6,23 @@ body {
     align-items: center;
     min-width: 100vh;
     background: linear-gradient(90deg, rgb(40, 96, 250), rgb(180, 16, 245));
-    margin:0px;
+    margin: 0px;
+    background-size: 300% 300%;
+    animation: gradientAnimation 5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 50% 75%;
+    }
+
+    50% {
+        background-position: 50% 75%;
+    }
+
+    100% {
+        background-position: 75% 50%;
+    }
 }
 
 /*  top  right  bottom  left */
@@ -59,7 +75,6 @@ body {
 
 .activeButtom {
     background: linear-gradient(90deg, rgb(36, 40, 255), rgb(191, 48, 248));
-    color: white;
 }
 
 #textoForm {
@@ -72,20 +87,18 @@ body {
     margin-bottom: 20px;
 }
 
-.Form
-{
+.Form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     transition: max-height 0.3s ease;
-    overflow:hidden;
-    max-height: 300px; 
+    overflow: hidden;
+    max-height: 300px;
 }
 
-.formField 
-{
+.formField {
     margin: 15px 0;
 }
 

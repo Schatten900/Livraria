@@ -44,7 +44,7 @@ class Usuario():
                 salt,
                 hashed,
                 0,
-                idAux
+                idAux,
             )
             executeQuery(QUERY,insert_params)
             self.user.setUser(nomeUser.get(),emailUser.get(),passwordUser.get(),0,idAux)
