@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(data => {
-                if (data.status === 'sucess') {
+                if (data.status === 'success') {
                     console.log("Registrado com sucesso");
                     window.location.href = data.redirect;
                 }
