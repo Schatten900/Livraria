@@ -52,7 +52,6 @@
         </nav>
     </header>
     <div id="Container">
-
         <div id="SideBar">
             <div id="SideBarContent">
                 <div id="user">
@@ -97,7 +96,6 @@
                     </button>
                 </div>
             </div>
-
         </div>
         <main id="main-content">
             <div id="GenerosLabel">
@@ -116,13 +114,13 @@
             </form>
             <div class='products'>
                 {% for book in Books %}
-                <div class='productItem'>
-                    <img src="{{ book[5] }}" alt="Book Cover">
-                    <span id="titleProduct">{{book[1]}}</span>
-                    <span id="authorProduct">{{book[2]}}</span>
-                    <span id="precoProduct">R$ {{book[3]}}</span>
-                    <span id="productQntd">Quantidade: {{book[4]}} </span>
-                    <span id="productEmail">Avaliação: {{book[0]}} </span>
+                <div class='productItem' onclick="window.location.href='/redirect_to_book/{{ book[6] }}/{{ IdEstoque }}'">
+                    <img src="{{ book[4] }}" alt="Book Cover">
+                    <span id="titleProduct">{{book[0]}}</span>
+                    <span id="authorProduct">{{book[1]}}</span>
+                    <span id="precoProduct">R$ {{book[2]}}</span>
+                    <span id="productQntd">Quantidade: {{book[3]}} </span>
+                    <span id="productEmail">Avaliação: {{book[5]}} </span>
                 </div>
                 {% endfor %}
             </div>

@@ -19,9 +19,26 @@ def storePage():
         livros = estoque.selectALL()
         generos = estoque.selectGenres()
         if livros:
-            return render_template('index.html', Books=livros, username = username, Genres=generos)
+            return render_template('index.html', Books=livros, username = username, Genres=generos, IdEstoque=idUser)
         return render_template('index.html',username = username)
     return redirect(url_for('loginPage'))
+
+@app.route('/livro/<IdISBN>/<IdEstoque>',methods=["GET","POST"])
+def bookPage(IdISBN,IdEstoque):
+    #logica para procurar pelo livro no estoque
+    if request.method == "POST":
+        pass
+    else:
+        estoque = Estoque()
+        livro = estoque.selectOne(IdISBN)
+        if livro:
+            book = livro[0]
+            return render_template('livroPage.html',book=book)
+    return render_template('livroPage.html')
+
+@app.route('/redirect_to_book/<IdISBN>/<IdEstoque>')
+def redirectToBook(IdISBN, IdEstoque):
+    return redirect(url_for('bookPage', IdISBN=IdISBN, IdEstoque=IdEstoque))
 
 @app.route('/favoritos')
 def favPage():
@@ -85,8 +102,9 @@ def estoquePage():
             livros = estoque.select()
             generos = estoque.selectGenres()
             if livros:
-                return render_template('estoque.html',Books=livros,username = username,Genres=generos)
-            return render_template('estoque.html',username=username,Genres=generos)
+                print(livros)
+                return render_template('estoque.html',Books=livros,username=username,Genres=generos,IdEstoque=idUser)
+            return render_template('estoque.html',username=username,Genres=generos,IdEstoque=idUser)
         
     #caso o usuario não esteja logado
     return redirect(url_for('loginPage'))

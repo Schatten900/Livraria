@@ -95,7 +95,7 @@ class Estoque():
     def select(self):
         try:
             QUERY = """
-            SELECT L.Titulo,L.Autor, E.Preco, E.Quantidade,L.CapaLivro
+            SELECT L.Titulo,L.Autor, E.Preco, E.Quantidade,L.CapaLivro,E.AvaliacaoEstoque,L.ISBN
             FROM LivroEstoque as E
             INNER JOIN Livro as L ON E.ISBN = L.ISBN
             WHERE E.IdEstoque = %s
@@ -111,17 +111,31 @@ class Estoque():
     def selectALL(self):
         try:
             QUERY = """
-            SELECT T.AvaliacaoEstoque,L.Titulo,L.Autor, E.Preco, E.Quantidade, L.CapaLivro
+            SELECT L.Titulo,L.Autor, E.Preco, E.Quantidade, L.CapaLivro, T.AvaliacaoEstoque, L.ISBN
             FROM LivroEstoque as E
             INNER JOIN Livro as L ON E.ISBN = L.ISBN
             INNER JOIN Estoque as T ON E.IdEstoque= T.IdEstoque;
             """ 
-        
             books = executeQuery(QUERY)
             #for book in books:
                # print(book[5])
             return books
         
+        except ValueError as e:
+            print(e)
+            return None
+        
+    def selectOne(self,isbn):
+        try:
+            QUERY = """
+            SELECT L.titulo,L.autor,E.Preco,E.Quantidade,L.CapaLivro,T.AvaliacaoEstoque,L.Descricao
+            FROM LivroEstoque as E
+            INNER JOIN Livro as L ON E.ISBN = L.ISBN
+            INNER JOIN Estoque as T ON E.IdEstoque = T.IdEstoque  
+            WHERE E.ISBN = %s
+            """
+            books = executeQuery(QUERY,isbn)
+            return books
         except ValueError as e:
             print(e)
             return None

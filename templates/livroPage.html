@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link href="{{url_for('static',filename='styles/userSide.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename='styles/SideBar.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename='styles/header.css')}}" rel="stylesheet">
     <link href="{{url_for('static',filename='styles/Estoque.css')}}" rel="stylesheet">
-    <link href="{{url_for('static',filename='styles/AddProductForm.css')}}" rel="stylesheet">
-    <title>BookStore</title>
+    <link href="{{url_for('static',filename='styles/livroPage.css')}}" rel="stylesheet">
+    <title>Livro</title>
 </head>
 
 <body>
@@ -43,7 +42,7 @@
                     </a>
                 </li>
                 <li class="Itens-topo">
-                    <a href="{{url_for('storePage')}}">
+                    <a href="{{url_for('loginPage')}}">
                         <i class="fa-solid fa-user"></i>
                         <span class="Icon">Entrar</span>
                     </a>
@@ -53,7 +52,6 @@
         </nav>
     </header>
     <div id="Container">
-
         <div id="SideBar">
             <div id="SideBarContent">
                 <div id="user">
@@ -66,13 +64,13 @@
                     </p>
                 </div>
                 <ul id="SideBarItens">
-                    <li class="SideBarItens">
+                    <li class="SideBarItens active">
                         <a href="{{url_for('storePage')}}">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span class='itemDescription'>Loja</span>
                         </a>
                     </li>
-                    <li class="SideBarItens active">
+                    <li class="SideBarItens ">
                         <a href="{{url_for('estoquePage')}}">
                             <i class="fa-solid fa-store"></i>
                             <span class='itemDescription'>Estoque</span>
@@ -98,64 +96,29 @@
                     </button>
                 </div>
             </div>
-
         </div>
-
-        <main id="main-content">
-            <div id='managmentProducts'>
-                <div>
-                    <button id='addProduct' class="managmentButtom">Adicionar produtos</button>
-                    <button id='removeProductButtom' class="managmentButtom">Remover produtos</button>
-                </div>
+        <main id="ContainerProduct">
+            <div id="ProductImagemAndDescContainer">
+                <img src="{{book[4]}}" alt="Capa do livro" id="productImage">
+                <label id="ProductDescricao">{{book[6]}}</label>
             </div>
-            <div>
-                <form id="addProductForm">
-                    <div id="addProductContainer">
-                        <input type="text" placeholder="Titulo" class="textoForm" id="inputTitle">
-                        <input type="text" placeholder="Autor" class="textoForm" id="inputAuthor">
-                        <div id='InfoLabel'>
-                            <label for="text">Quantidade</label>
-                            <input type="number" min="1" max="30" class='inputLabel' id='inputQntd'>
-                        </div>
-                        <div id='InfoLabel'>
-                            <label for="text">Preco (Coins)</label>
-                            <input type="number" min="1" step="any" class="inputLabel" id="inputPrice" />
-                        </div>
-                        <div class="generosContainer" id="generosContainer">
-                            {% for genre in Genres %}
-                            <div id="genreItem  ">
-                                <input type="checkbox" id="generosBox_{{loop.index}}"class="generosBox" value="{{genre[0]}}">
-                                <label for="generosBox_{{loop.index}}" id="generosLabel">{{genre[0]}}</label>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <button id='addProductButtom' class="managmentButtom">Adicionar</button>
-                    </div>
-                </form>
-
-            </div>
-            <div class='products'>
-                {% for book in Books %}
-                <div class='productItem' onclick="window.location.href='/redirect_to_book/{{ book[6] }}/{{ IdEstoque }}'">
-                    '">
-                    <img src="{{ book[4] }}" alt="Avatar">
-                    <span id="titleProduct">{{book[0]}}</span>
-                    <span id="authorProduct">{{book[1]}}</span>
-                    <span id="precoProduct">R$ {{book[2]}}</span>
-                    <span id="productQntd">Quantidade: {{book[3]}} </span>
-                    <div>
-                        <input type="checkbox">
-                    </div>
+            <div id="ProductInfo">
+                <div id="ProductHeader">
+                    <label id="productTitle">{{book[0]}}</label>
+                    <label id="productAuthor">{{book[1]}}</label>
                 </div>
-                {% endfor %}
+                <div id="ProductPurchase">
+                    <label id="productPrice">R$ {{book[2]}}</label>
+                    <label id="productAvaliacao">Avaliação do estoque: {{book[5]}}</label>
+                    <label id="productQuantity">Quantidade no estoque: {{book[3]}}</label>
+                </div>
+                <button id="purchaseProductButtom">Comprar</button>
             </div>
         </main>
     </div>
-
-    <script src="{{url_for('static',filename='javascript/estoque/addProductForm.js')}}"></script>
-    <script src="{{url_for('static',filename='javascript/estoque/addProductInStock.js')}}"></script>
-    <script src="{{url_for('static',filename='javascript/estoque/removeProductInStock.js')}}"></script>
     <script src="{{url_for('static',filename='javascript/sideBar.js')}}"></script>
+    <script src="{{url_for('static',filename='javascript/ComprarLivro.js')}}"></script>
+
 </body>
 
 </html>

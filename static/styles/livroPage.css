@@ -1,0 +1,82 @@
+#ContainerProduct {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#ProductImagemAndDescContainer {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 100%;
+    background-color: white;
+    align-items: center;
+}
+
+#ProductInfo {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 300px;
+    padding: 15px;
+    gap: 25px;
+}
+
+#productImage {
+    width: 80%;
+    height: 70%;
+    border-radius: 8px;
+}
+
+#ProductDescricao {
+    font-size: 18px;
+    font-family: "Oswald", sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    cursor: text;
+}
+
+#ProductHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+#productTitle {
+    font-size: 25px;
+    cursor: text;
+}
+
+#productAuthor {
+    color: gray;
+    cursor: text;
+}
+
+#ProductPurchase {
+    display: flex;
+    flex-direction: column;
+}
+
+#productPrice {
+    font-size: 25px;
+    color: green;
+    cursor: text;
+}
+
+#productQuantity {}
+
+#purchaseProductButtom {
+    width: 200px;
+    height: 30px;
+    background-color: rgb(110, 33, 255);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 1s ease;
+}
+
+#purchaseProductButtom:hover {
+    transform: scale(1.05, 1.05);
+}
